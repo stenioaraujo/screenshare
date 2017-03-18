@@ -1,14 +1,23 @@
 <html>
     <head>
+        <title>Screen Capturing</title>
+    </head>
+    <body>
+        Quality: <input id=quality type=number value=10>
+        Extension: <input id=extension type=text value=jpeg>
+	Interval (ms): <input id=interval type=number value=1000>
+	<br />
+        <img width="100%" id="screen">
         <script type="text/javascript">
             function reloadpic() {
-                document.images["screen"].src = "screen.png?random=" + new Date().getTime();
-                setTimeout("reloadpic();", 500);
+		document.images["screen"].src = 
+		  "screen.png?random=" + new Date().getTime() +
+		  "&quality=" + quality.value +
+		  "&extension=" + extension.value;
+                
+		setTimeout("reloadpic();", interval.value);
             }
             onload = reloadpic;
         </script>
-    </head>
-    <body>
-        <img width="100%" id="screen">
     </body>
 </html>
